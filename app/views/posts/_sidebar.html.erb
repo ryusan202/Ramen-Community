@@ -1,0 +1,22 @@
+<div class="sidebar">
+  <div class="profile">
+    <% if user_signed_in? %>
+      <%= link_to edit_user_registration_path do %>
+        <%= current_user.name %>
+      <% end %>
+    <% else %>
+
+    <% end %>
+  </div>
+
+  <div class="new-post">
+    <% if user_signed_in? %>
+      <%= link_to "New Post", new_post_path, class: "btn btn-primary btn-block mb-3" %>
+    <% end %>
+  </div>
+  
+   <div class="new-post">
+     <%= render "likes/index"%>
+   </div>
+  
+</div>

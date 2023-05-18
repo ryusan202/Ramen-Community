@@ -1,0 +1,5 @@
+<!-- app/views/likes/index.html.erb -->
+<h1>Liked Posts</h1>
+<% @liked_posts.each do |post| %>
+  <p><%= post.title %></p>
+<% end %>

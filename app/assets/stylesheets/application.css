@@ -13,3 +13,19 @@
  *= require_tree .
  *= require_self
  */
+.rating-buttons {
+  display: flex;
+}
+
+.rating-button {
+  background-color: #ccc;
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.rating-button:hover {
+  background-color: #999;
+}
+

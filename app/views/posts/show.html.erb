@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-2">
+      <%= render 'sidebar' %>
+    </div>
+    <div class="col-md-9">
+      <div class="card mb-3" style="max-width: 1200px;">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <% if @post.image.attached? %>
+              <%= image_tag @post.image, class: "card-img-top h-100 w-100" %>
+            <% else %>
+              <%= image_tag "142_refileDownloadImage", class: "card-img-top h-100 w-100" %>
+            <% end %>
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title" style="font-size: 32px;"><%= @post.title %></h5>
+              <p class="card-text" style="font-size: 24px;"><%= @post.body %></p>
+              <ul class="list-group list-group-flush">
+                 <div id="favorite_btn_<%= @post.id %>">
+                 <%= render 'likes/like',  post: @post  %>
+                 </div>
+                <li class="list-group-item" style="font-size: 24px;">ジャンル: <%= @post.genre %></li>
+                <li class="list-group-item" style="font-size: 24px;">投稿日: <%= @post.created_at.strftime("%Y/%m/%d") %></li>
+                <li class="list-group-item" style="font-size: 24px;">評価:</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card mb-3" style="max-width: 1200px;">
+        <div class="card-body">
+          <h5 class="card-title">コメント</h5>
+          <div class="comments">
+            <p class="comment-count">コメント件数: <%= @post.post_comments.count %></p>
+            <% @post.post_comments.each do |post_comment| %>
+              <div class="comment">
+                <p class="comment-date"><%= post_comment.created_at.strftime('%Y/%m/%d') %> <%= post_comment.user.name %></p>
+                <p class="comment-content"><%= post_comment.comment %></p>
+              </div>
+            <% end %>
+          </div>
+          <%= form_with model: [@post, @post_comment] do |f| %>
+            <div class="form-group">
+              <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+            </div>
+            <%= f.submit "送信する", class: "btn btn-primary" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">新規投稿</div>
+        <div class="card-body">
+          <%= form_with(model: @post, url: posts_path, class: "form-horizontal", enctype: "multipart/form-data") do |form| %>
+            <% if @post.errors.any? %>
+              <div id="error_explanation" class="alert alert-danger">
+                <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+                <ul>
+                <% @post.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+                </ul>
+              </div>
+            <% end %>
+
+            <div class="form-group">
+              <%= form.label :title, class: "col-sm-3 control-label" %>
+              <div class="col-sm-9">
+                <%= form.text_field :title, class: "form-control" %>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <%= form.label :genre, class: "col-sm-3 control-label" %>
+              <div class="col-sm-9">
+                <%= form.select :genre, options_for_select(['ジャンル1', 'ジャンル2', 'ジャンル3']), {}, { class: "form-control" } %>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <%= form.label :body, class: "col-sm-3 control-label" %>
+              <div class="col-sm-9">
+                <%= form.text_area :body, class: "form-control" %>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <%= form.label :image, class: "col-sm-3 control-label" %>
+              <div class="col-sm-9">
+                <%= form.file_field :image, class: "form-control-file" %>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-sm-offset-3 col-sm-9">
+                <%= form.submit "投稿する", class: "btn btn-primary" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

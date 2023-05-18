@@ -1,0 +1,11 @@
+<%# 平均点を算出し、round関数で切り上げ %>
+<%=@all_rating %>：<%= @reviews.average(:all_rating).to_f.round(1) %>
+<%# 評価数を星に置き換える %>
+ <div class="average-review-rating" data-score=<%= @reviews.average(:all_rating) %>></div> 
+
+<th class="table__col1">総合評価</th>
+ <td class="table__col1">  <div class="field" id="star"><% f.label :all_rating %></div></td>
+</tr>
+<%# 同様に、rating1なども記載する%>
+
+<%= render partial: "items/form_rate", locals: { item: @item } %>

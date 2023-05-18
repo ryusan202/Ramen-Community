@@ -1,24 +1,31 @@
-# README
+# Ramen-Community
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+### サイトテーマ
+ラーメン愛好家によるコミュニティサイト
 
-Things you may want to cover:
+### テーマを選んだ理由
+このテーマを選んだ理由は、ラーメンが多様であり、地域ごとに特色があることや、ラーメン店が新しい店を続々とオープンしており、情報が更新され続けていることに注目したからです。このような情報を共有するコミュニティアプリは、ラーメン愛好家のライフスタイルに貢献し、彼らが新しいお店や新しい種類のラーメンを発見するのを手助けすることができます。また、現代においては、SNSやコミュニティアプリが数多く存在し、ラーメンに対する関心が高まっていることから、需要も十分にあると考えました。このアプリがラーメン業界に与える影響は、より多くの人々がラーメンの多様性を知り、新しいラーメン店を開拓することに繋がるため、業界にとっても利益をもたらすことができます。
 
-* Ruby version
+### ターゲットユーザ
+新しいラーメン店を探したい人、ラーメンの情報収集が趣味の人
 
-* System dependencies
+### 主な利用シーン
+・新しいラーメン店を探したい時
+・自分の行ったラーメン店についての情報を共有したい時
+・他のユーザーのラーメン店についての口コミや評価を見たい時
 
-* Configuration
 
-* Database creation
+## 設計書
 
-* Database initialization
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+## 開発環境
+- OS：Windows
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
 
-* Deployment instructions
-
-* ...
+## 使用素材
+- 使用検討中です
