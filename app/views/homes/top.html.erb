@@ -3,7 +3,10 @@
         <div class="col-md-6">
           <h1 class="mb-3">Welcome to Ramen Community!</h1>
           <p class="lead">This is a community where ramen lovers can share their favorite ramen shops and ramen recipes.</p>
-          <%= link_to 'ゲストログイン（閲覧用）', homes_guest_sign_in_path, method: :post %>
+          <% unless user_signed_in? %>
+  <%= link_to 'ゲストログイン（閲覧用）', homes_guest_sign_in_path, method: :post %>
+<% end %>
+
           
         </div>
         <div class="col-md-6">

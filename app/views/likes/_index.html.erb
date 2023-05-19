@@ -1,5 +1,10 @@
-<!-- app/views/likes/index.html.erb -->
-<h1>Liked Posts</h1>
-<% @liked_posts.each do |post| %>
-  <p><%= post.title %></p>
+<% if current_user %>
+  <% @posts.each do |post| %>
+    <% if current_user.likes.exists?(post_id: post.id) %>
+      <div class="post-item">
+        <%= link_to post.title, post_path(post.id) %>
+        <p>投稿者 <%= post.user.name if post.user.present? %></p>
+      </div>
+    <% end %>
+  <% end %>
 <% end %>
