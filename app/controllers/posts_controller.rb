@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
-
+  before_action :authenticate_user!, except: [:index, :show, :destroy]
+  before_action :authenticate_admin!, only: [:destroy]
 def index
   @posts = Post.all
 
@@ -52,6 +52,12 @@ end
     @post_comment = PostComment.new
     @posts = [@post] 
   end
+  
+def destroy
+  @post = Post.find(params[:post_id])
+  @post.destroy
+  redirect_to posts_path, notice: '投稿が削除されました。'
+end
 
   private
 

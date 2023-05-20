@@ -24,6 +24,6 @@ class Post < ApplicationRecord
 
 
   def liked?(user)
-    likes.where(user_id: user.id).exists?
-  end  
+    user.present? && likes.where(user_id: user.id).exists?
+  end
 end

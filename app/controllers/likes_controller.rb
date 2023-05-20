@@ -1,6 +1,10 @@
 class LikesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_user
+   before_action :check_guest, only: :create
+   
+
+   
 def index
   likes = Like.where(user_id: current_user.id).pluck(:post_id)
  like_posts = Post.where(id: likes)
@@ -23,5 +27,10 @@ end
 private
   def set_user
     @user = current_user
+  end
+  def check_guest
+    if current_user.guest?
+      redirect_to root_path, alert: "ゲストユーザーはいいね機能を使用できません。"
+    end
   end
 end
