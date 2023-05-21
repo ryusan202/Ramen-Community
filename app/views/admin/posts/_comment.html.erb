@@ -1,0 +1,12 @@
+    <div class="col-md-6">
+        <ul class="list-group">
+      <% @comments.each do |comment| %>
+          <li class="list-group-item"><%= comment.comment %>
+         
+         <% if admin_signed_in? %>
+  <%= link_to '削除',  destroy_comment_admin_post_path(comment), method: :delete, data: { confirm: '本当に削除しますか？' } %>
+<% end %>
+</li>
+      <% end %>
+</ul>
+    </div>

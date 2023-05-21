@@ -1,4 +1,5 @@
 class PostCommentsController < ApplicationController
+  before_action :authenticate_admin!, only: [:destroy]
 
   def create
     post = Post.find(params[:post_id])
@@ -8,10 +9,15 @@ class PostCommentsController < ApplicationController
     redirect_to post_path(post.id)
   end
 
+  def destroy
+    @comment = PostComment.find(params[:id])
+    @comment.destroy
+    redirect_to post_path(@comment.post_id), notice: 'コメントが削除されました。'
+  end
+
   private
 
   def post_comment_params
     params.require(:post_comment).permit(:comment)
   end
-
 end

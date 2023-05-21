@@ -32,6 +32,11 @@
             <li class="nav-item">
               <%= render "searches/search"%>
             </li>
+            <li class="nav-item">
+              <% if admin_signed_in? %>
+              <%= link_to "管理者ページ",admin_page_path, class: 'nav-link'%>
+              <% end %>
+            </li>
           </ul>
           <ul class="navbar-nav">
             <% if user_signed_in? %>

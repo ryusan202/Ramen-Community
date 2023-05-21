@@ -42,6 +42,11 @@
               <div class="comment">
                 <p class="comment-date"><%= post_comment.created_at.strftime('%Y/%m/%d') %> <%= post_comment.user.name %></p>
                 <p class="comment-content"><%= post_comment.comment %></p>
+<% if admin_signed_in? %>
+  <%= link_to '削除', post_post_comment_path(@post, post_comment), method: :delete, data: { confirm: '本当に削除しますか？' } %>
+<% end %>
+
+
               </div>
             <% end %>
           </div>

@@ -1,0 +1,5 @@
+<h6><strong>ジャンル検索</strong></h6>
+<%= form_tag posts_path, method: :get do %>
+<%= select_tag :genre, options_for_select(Genre.pluck(:name)), include_blank: true %>
+  <%= submit_tag '検索' %>
+<% end %>

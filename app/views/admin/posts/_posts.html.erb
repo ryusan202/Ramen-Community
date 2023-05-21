@@ -1,0 +1,12 @@
+<div class="col-md-6">
+      <% @posts.each do |post| %>
+        <div class="card mb-3">
+          <div class="card-body">
+            <p class="card-title"><%= post.title %></p>
+            <% if admin_signed_in? %>
+  <%= link_to '削除', destroy_post_admin_post_path(post), method: :delete, data: { confirm: '本当に削除しますか？' } %>
+<% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>

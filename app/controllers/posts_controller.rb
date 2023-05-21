@@ -3,7 +3,10 @@ class PostsController < ApplicationController
   before_action :authenticate_admin!, only: [:destroy]
 def index
   @posts = Post.all
-
+if params[:genre].present?
+  @selected_genre = Genre.find_by(name: params[:genre])
+else # ジャンルが選択されていない場合
+end
 end
 
   def new
@@ -18,34 +21,9 @@ if @post.save
 else
   render :new
 end
-
   end
 
-# def search
-#   @keyword = params[:keyword]
-#   # orderメソッドへ代入する値を条件分岐
-#   # params[:sort].nil? ? sort  = "created_at DESC" : sort = params[:sort]をリファクタリング
-#   sort = params[:sort] || "created_at DESC"
-#   # 入力された値をLIKE句により各カラムと一致したものを抽出する。
-#   @products = Product.where('name LIKE(?) OR description LIKE(?)', "%#{@keyword}%", "%#{@keyword}%").order(sort)
-#   @count = @products.count
-#   # 検索結果が"0"だった場合、全ての商品を表示させる
-#   if @count == 0
-#     @products = Product.order(sort)
-#   end
-# end
 
-  def search
-    @range = params[:range]
-
-    if @range == "User"
-      @users = User.looks(params[:search], params[:word])
-    else
-      @posts = Post.looks(params[:search], params[:word])
-    end
-    
-    render :index
-  end
 
   def show
     @post = Post.find(params[:id])
@@ -64,4 +42,5 @@ end
   def post_params
     params.require(:post).permit(:title, :body, :genre_id, :image)
   end
+
 end
