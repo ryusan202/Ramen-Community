@@ -22,7 +22,7 @@
                  <div id="favorite_btn_<%= @post.id %>">
                  <%= render 'likes/like',  post: @post  %>
                  </div>
-                <li class="list-group-item" style="font-size: 24px;">ジャンル: <%= @post.genre %></li>
+                <li class="list-group-item" style="font-size: 24px;">ジャンル: <%= @post.genre.name %></li>
                 <li class="list-group-item" style="font-size: 24px;">投稿日: <%= @post.created_at.strftime("%Y/%m/%d") %></li>
                 <li class="list-group-item" style="font-size: 24px;">評価:</li>
 <% if admin_signed_in? %>

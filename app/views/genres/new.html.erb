@@ -1,0 +1,9 @@
+<!-- app/views/genres/new.html.erb -->
+<h1>ジャンル作成</h1>
+<%= form_with(model: @genre, url: genres_path) do |form| %>
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+  <%= form.submit "作成" %>
+<% end %>

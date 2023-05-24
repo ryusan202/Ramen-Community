@@ -1,5 +1,6 @@
 class HomesController < ApplicationController
   def top
+     @genres = Genre.all
   end
     def guest_sign_in
     user = User.find_or_create_by!(email: 'guest@example.com') do |user|

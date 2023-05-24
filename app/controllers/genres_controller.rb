@@ -1,40 +1,19 @@
+# app/controllers/genres_controller.rb
 class GenresController < ApplicationController
-    def index
+  def new
+    @genre = Genre.new
+  end
+  
+  def index
     @genres = Genre.all
-    @new_genre = Genre.new
-    end
-
+  end
+  
   def create
     @genre = Genre.new(genre_params)
     if @genre.save
-      redirect_to admin_genres_path, notice: "ジャンルを登録しました。"
+      redirect_to genres_path, notice: "ジャンルを作成しました。"
     else
-      @genres = Genre.all
-      render 'index'
-    end
-  end
-  
-  def edit
-  @genre = Genre.find(params[:id])
-  end
-
-  def update
-    @genre = Genre.find(params[:id])
-    if @genre.update(genre_params)
-      redirect_to admin_genres_path, notice: "ジャンルを更新しました。"
-    else
-      @genres = Genre.all
-      render 'index'
-    end
-  end
-
-  def destroy
-    @genre = Genre.find(params[:id])
-    if @genre.destroy
-      redirect_to admin_genres_path, notice: "ジャンルを削除しました。"
-    else
-      @genres = Genre.all
-      render 'index'
+      render :new
     end
   end
 
@@ -44,4 +23,3 @@ class GenresController < ApplicationController
     params.require(:genre).permit(:name)
   end
 end
-

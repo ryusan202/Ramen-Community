@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+
 Admin.create!(
    email: 'admin@admin',
    password: '846557'
@@ -15,36 +16,8 @@ Admin.create!(
 #   email: 'test@test',
 #   password: '846557'
 # )
-%i[
-とんこつラーメン
-しょうゆラーメン
-みそラーメン
-しおラーメン
-とんこつしょうゆラーメン
-とんこつみそラーメン
-とんこつしおラーメン
-とんこつとんこつラーメン
-しょうゆみそラーメン
-しょうゆしおラーメン
-みそしおラーメン
-つけ麺
-担々麺
-五目ラーメン
-カレーラーメン
-タンメン
-ワンタンメン
-チャーシューメン
-ネギラーメン
-ベジタリアンラーメン
-].each { |name| Genre.find_or_create_by(name:) }
-genre_ids = Genre.all.pluck(:id)
+Genre.create(name: "ラーメン")
+Genre.create(name: "つけ麺")
+Genre.create(name: "味噌ラーメン")
 
 
-
-post_attributes.each do |post_attribute|
-  Post.find_or_create_by(
-    title: post_attribute[:title],
-    user_id: post_attribute[:user_id],
-    genre_id: genre_ids.sample
-  )
-end

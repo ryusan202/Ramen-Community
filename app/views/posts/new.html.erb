@@ -24,12 +24,12 @@
               </div>
             </div>
 
-            <div class="form-group">
-              <%= form.label :genre, class: "col-sm-3 control-label" %>
-              <div class="col-sm-9">
-                <%= form.select :genre, options_for_select(['ジャンル1', 'ジャンル2', 'ジャンル3']), {}, { class: "form-control" } %>
-              </div>
-            </div>
+<div class="form-group">
+  <%= form.label :genre_id, class: "col-sm-3 control-label" %>
+  <div class="col-sm-9">
+    <%= form.collection_select :genre_id, Genre.all, :id, :name, prompt: "ジャンルを選択してください", class: "form-control" %>
+  </div>
+</div>
 
             <div class="form-group">
               <%= form.label :body, class: "col-sm-3 control-label" %>

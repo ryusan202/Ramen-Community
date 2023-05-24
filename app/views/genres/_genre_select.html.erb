@@ -1,0 +1,4 @@
+<div class="mr-2">
+  <%= select_tag(:genre, options_from_collection_for_select(genres, :id, :name, params[:genre]), include_blank: true, class: "form-control") %>
+</div>
+<%= submit_tag('検索', class: "btn btn-primary") %>

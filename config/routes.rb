@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   root to: 'homes#top'
   post '/homes/guest_sign_in', to: 'homes#guest_sign_in'
-resources :genres, only: [:show]
+resources :genres
   authenticated :admin do
     get 'admin_page', to: 'admin/posts#date_base'
     resources :posts, only: [] do

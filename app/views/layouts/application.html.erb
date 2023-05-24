@@ -29,9 +29,14 @@
             <li class="nav-item">
               <%= link_to 'Community', posts_path, class: 'nav-link' %>
             </li>
-            <li class="nav-item">
-              <%= render "searches/search"%>
-            </li>
+<li class="nav-item">
+  <%= form_tag(posts_path, method: :get, class: "form-inline") do %>
+    <div class="d-flex">
+      <%= render partial: 'genres/genre_select', locals: { genres: @genres } %>
+    </div>
+  <% end %>
+</li>
+
             <li class="nav-item">
               <% if admin_signed_in? %>
               <%= link_to "管理者ページ",admin_page_path, class: 'nav-link'%>

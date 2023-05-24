@@ -1,27 +1,33 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show, :destroy]
   before_action :authenticate_admin!, only: [:destroy]
+
 def index
-  @posts = Post.all
-if params[:genre].present?
-  @selected_genre = Genre.find_by(name: params[:genre])
-else # ジャンルが選択されていない場合
+  if params[:genre].present?
+    @posts = Post.includes(:genre).where(genres: { id: params[:genre] })
+  else
+    @posts = Post.all
+  end
+  @genres = Genre.all
 end
-end
+
 
   def new
     @post = Post.new
   end
 
-  def create
-    @post = Post.new(post_params)
-@post.user_id = current_user.id
-if @post.save
-  redirect_to @post, notice: "Post was successfully created."
-else
-  render :new
-end
+def create
+  @post = Post.new(post_params)
+  @post.user_id = current_user.id
+  @post.genre_id = params[:post][:genre_id] # ジャンルの選択値を設定する
+
+  if @post.save
+    redirect_to @post, notice: "投稿が作成されました。"
+  else
+    render :new
   end
+end
+
 
 
 
