@@ -14,11 +14,13 @@ end
 
   def new
     @post = Post.new
+    @genres = Genre.all
   end
 
 def create
   @post = Post.new(post_params)
   @post.user_id = current_user.id
+  @genres = Genre.all
   @post.genre_id = params[:post][:genre_id] # ジャンルの選択値を設定する
 
   if @post.save
@@ -34,7 +36,8 @@ end
   def show
     @post = Post.find(params[:id])
     @post_comment = PostComment.new
-    @posts = [@post] 
+    @posts = [@post]
+    @genres = Genre.all
   end
   
 def destroy
