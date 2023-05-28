@@ -32,7 +32,7 @@
 <li class="nav-item">
   <%= form_tag(posts_path, method: :get, class: "form-inline") do %>
     <div class="d-flex">
-      <%= render partial: 'genres/genre_select', locals: { genres: @genres } %>
+      <%= render partial: 'genres/genre_select', locals: { genres: Genre.all } %>
     </div>
   <% end %>
 </li>
